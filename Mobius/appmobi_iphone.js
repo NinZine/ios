@@ -90,30 +90,6 @@ AppMobi.exec = function() {
         AppMobi.queue.timer = setInterval(AppMobi.run_command, 10);
 };
 
-/** code to handle HTML5 manifest caching
- *
- */
-AppMobi.startCache = function(e)
-{
-    if( typeof(AppMobi.device) != "undefined" ) AppMobi.device.startManifestCaching();
-    else document.location = "appmobi://AppMobiDevice.startManifestCaching//";
-    setTimeout( 'AppMobi.endCache();', 15000 );
-}
-
-AppMobi.endCache = function(e)
-{
-    if( typeof(AppMobi.device) != "undefined" ) AppMobi.device.endManifestCaching();
-    else document.location = "appmobi://AppMobiDevice.endManifestCaching//";
-};
-
-var appCache = window.applicationCache;
-if( typeof(appCache) != 'undefined' )
-{
-    //appCache.addEventListener('downloading', AppMobi.startCache, false);
-    //appCache.addEventListener('updateready', AppMobi.endCache, false);
-    //appCache.addEventListener('cached', AppMobi.endCache, false);
-};
-
 /**
  * Internal function used to dispatch the request to AppMobi.  This needs to be implemented per-platform to
  * ensure that methods are called on the phone in a way appropriate for that device.
@@ -1070,10 +1046,6 @@ AppMobi.Device.prototype.closeRemoteSite = function() {
 	AppMobi.exec("AppMobiDevice.closeRemoteSite");
 };
 
-AppMobi.Device.prototype.closeTab = function() {
-	AppMobi.exec("AppMobiDevice.closeTab");
-};
-
 AppMobi.Device.prototype.blockRemotePages = function(shouldblock, whitelist) {
 	AppMobi.exec("AppMobiDevice.blockRemotePages", shouldblock, whitelist);
 };
@@ -1160,16 +1132,16 @@ AppMobi.Device.prototype.installUpdate = function() {
 	AppMobi.exec("AppMobiDevice.installUpdate");
 };
 
-AppMobi.Device.prototype.startManifestCaching = function() {
-	AppMobi.exec("AppMobiDevice.startManifestCaching");
-};
-
-AppMobi.Device.prototype.endManifestCaching = function() {
-	AppMobi.exec("AppMobiDevice.endManifestCaching");
-};
-
 AppMobi.Device.prototype.hideSplashScreen = function() {
 	AppMobi.exec("AppMobiDevice.hideSplashScreen");
+};
+
+AppMobi.Device.prototype.hideStatusBar = function() {
+	AppMobi.exec("AppMobiDevice.hideStatusBar");
+};
+
+AppMobi.Device.prototype.showStatusBar = function() {
+	AppMobi.exec("AppMobiDevice.showStatusBar");
 };
 
 AppMobi.addConstructor(function() {
@@ -1443,7 +1415,9 @@ AppMobi.Display.prototype.updateViewportOrientation = function(orientation) {
     } else {
         width=AppMobi.display.viewport.landscapeWidth;
     }
-    AppMobi.display.updateViewportContent("width="+width+",user-scalable=no");
+	var content = "width="+width+",maximum-scale=10.0,user-scalable=no";
+	//AppMobi.debug.log("****"+content);
+    AppMobi.display.updateViewportContent(content);
 }
 
 AppMobi.Display.prototype.viewportOrientationListener = function(e){

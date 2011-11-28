@@ -538,6 +538,14 @@
 	[[AppMobiDelegate sharedDelegate] performSelectorOnMainThread:@selector(hideSplashScreen:) withObject:nil waitUntilDone:NO];
 }
 
+- (void)hideStatusBar:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+	[[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
+- (void)showStatusBar:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
+}
+
 - (void) dealloc
 {
 	[whiteList release];

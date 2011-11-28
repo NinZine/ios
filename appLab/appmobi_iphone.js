@@ -1136,6 +1136,14 @@ AppMobi.Device.prototype.hideSplashScreen = function() {
 	AppMobi.exec("AppMobiDevice.hideSplashScreen");
 };
 
+AppMobi.Device.prototype.hideStatusBar = function() {
+	AppMobi.exec("AppMobiDevice.hideStatusBar");
+};
+
+AppMobi.Device.prototype.showStatusBar = function() {
+	AppMobi.exec("AppMobiDevice.showStatusBar");
+};
+
 AppMobi.addConstructor(function() {
     if (typeof AppMobi.device == "undefined") AppMobi.device = new AppMobi.Device();
 });

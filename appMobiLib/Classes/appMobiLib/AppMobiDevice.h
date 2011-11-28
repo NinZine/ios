@@ -34,5 +34,7 @@
 - (void)closeTab:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void)startManifestCaching:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void)endManifestCaching:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)hideStatusBar:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)showStatusBar:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end
