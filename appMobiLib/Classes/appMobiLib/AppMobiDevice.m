@@ -546,6 +546,14 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
+- (void)hideWebView:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+	[[AppMobiViewController masterViewController] popWebView];
+}
+
+- (void)showWebView:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+	[[AppMobiViewController masterViewController] pushWebView];
+}
+
 - (void) dealloc
 {
 	[whiteList release];

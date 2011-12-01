@@ -36,5 +36,7 @@
 - (void)endManifestCaching:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void)hideStatusBar:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void)showStatusBar:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)hideWebView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)showWebView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end

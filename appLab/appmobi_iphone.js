@@ -1144,6 +1144,14 @@ AppMobi.Device.prototype.showStatusBar = function() {
 	AppMobi.exec("AppMobiDevice.showStatusBar");
 };
 
+AppMobi.Device.prototype.hideWebView = function() {
+	AppMobi.exec("AppMobiDevice.hideWebView");
+};
+
+AppMobi.Device.prototype.showWebView = function() {
+	AppMobi.exec("AppMobiDevice.showWebView");
+};
+
 AppMobi.addConstructor(function() {
     if (typeof AppMobi.device == "undefined") AppMobi.device = new AppMobi.Device();
 });
