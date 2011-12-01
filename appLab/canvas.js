@@ -80,6 +80,8 @@ clearInterval = function(id){ return AppMobi.context.clearInterval(id); };
 // can use it directly as a substitute 
 Audio = _native.Audio;
 
+TouchInput = new _native.TouchInput();
+
 // Set up a fake HTMLElement and document object, so DirectCanvas is happy
 HTMLElement = function( tagName ){ 
 	this.tagName = tagName;
@@ -169,9 +171,14 @@ document = {
 	addEventListener: function( type, callback ){
 		if( type == 'DOMContentLoaded' ) {
 			setTimeout( callback, 1 );
+		} else if (type == "touchstart") {
+			TouchInput.touchStart(callback);
+		} else if (type == "touchmove") {
+			TouchInput.touchMove(callback);
+		} else if (type == "touchend") {
+			TouchInput.touchEnd(callback);
 		}
 	}
 };
-addEventListener = function( type, callback ){};
-
+addEventListener = function( type, callback ) {};
 
